@@ -1,0 +1,6 @@
+include("smartmon-gateway")
+include("smartmon-core")
+include("smartmon-utilities")
+
+include("smartmon-smartstor")
+include("smartmon-vhe")
