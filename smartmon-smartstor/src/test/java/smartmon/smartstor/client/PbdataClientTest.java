@@ -1,10 +1,10 @@
 package smartmon.smartstor.client;
 
 import org.junit.Test;
-import smartmon.smartstor.clients.PbdataClient;
-import smartmon.smartstor.clients.pbdata.types.PbdataVersion;
-import smartmon.smartstor.clients.pbdata.types.nodecfg.PbdataNodeInfo;
-import smartmon.smartstor.service.SmartManagerService;
+import smartmon.smartstor.infra.remote.clients.PbdataClient;
+import smartmon.smartstor.infra.remote.pbdata.service.SmartManagerService;
+import smartmon.smartstor.infra.remote.pbdata.types.PbdataVersion;
+import smartmon.smartstor.infra.remote.pbdata.types.nodecfg.PbdataNodeInfo;
 
 public class PbdataClientTest {
 
@@ -18,15 +18,17 @@ public class PbdataClientTest {
   @Test
   public void getNodeListTest() {
     SmartManagerService smartManagerService = new SmartManagerService();
-    final PbdataClient pbDataClient = smartManagerService.getPbDataClient("172.24.12.107", 9000);
+    final PbdataClient pbDataClient = smartManagerService.getPbdataClient("172.24.12.218", 9000);
     final PbdataNodeInfo[] nodeList = pbDataClient.getNodeList();
-    System.out.println(nodeList);
+    for (PbdataNodeInfo pbdataNodeInfo : nodeList) {
+      System.out.println(pbdataNodeInfo);
+    }
   }
 
   @Test
   public void getNodeInfoTest() {
     SmartManagerService smartManagerService = new SmartManagerService();
-    final PbdataClient pbDataClient = smartManagerService.getPbDataClient("172.24.12.218", 9000);
+    final PbdataClient pbDataClient = smartManagerService.getPbdataClient("172.24.12.218", 9000);
     final PbdataNodeInfo nodeInfo = pbDataClient.getNodeInfo();
     System.out.println(nodeInfo);
   }

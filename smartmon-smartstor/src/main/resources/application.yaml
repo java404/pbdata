@@ -1,2 +1,10 @@
 server.port: 15100
+service-api:
+  pbdata-storage:
+    port: 9000
+    connectTimeout: 60
+    readTimeout: 60
+    writeTimeout: 60
+    maxldleConnections: 500
+    keepAliveDuration: 5
 

@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-schema-001-table-metadata
+      author: xiong.jia_le
+      changes:
+        # Table metadata (
+        #   name  varchar(512),
+        #   value mediumtext
+        # )
+        - sql:
+            comment: Table metadata
+            dbms: h2, mysql
+            splitStatements: false
+            sql: CREATE TABLE metadata (
+              name VARCHAR(512), value MEDIUMTEXT,
+              constraint pk_metadata primary key (name));
+        - sql:
+            comment: Test data
+            sql: INSERT INTO metadata (name, value) VALUES ('test', 'data');
